@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace chmony
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue <string> customers = new Queue <string> ();
+            customers.Enqueue("Петр");
+            customers.Enqueue("София");
+            customers.Enqueue("Кира");
+            customers.Enqueue("Арина");
+            customers.Enqueue("Диана");
+            Console.WriteLine ("Очередь: " + string.Join(", ", customers));
+            while (customers.Count > 0)
+            {
+                string servedCustomer = customers.Dequeue ();
+                Console.WriteLine($"Обслуживаем: {servedCustomer}");
+            }
+            Console.WriteLine("Люди закончились короче");
+        }
+    }
+}
