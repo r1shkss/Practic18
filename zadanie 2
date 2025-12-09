@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cortis
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+       
+            {
+                Stack<string> stack = new Stack<string>();
+
+                Console.WriteLine("Введите строки. Пустая строка для завершения:");
+
+                while (true)
+                {
+                    string input = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(input))
+                    {
+                        break;
+                    }
+
+                    stack.Push(input);
+                }
+
+                Console.WriteLine("\nВывод:");
+                while (stack.Count > 0)
+                {
+                    Console.WriteLine(stack.Pop());
+                }
+            }
+        }
+    }
+}
