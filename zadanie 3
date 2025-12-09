@@ -1,0 +1,29 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cortis
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            {
+                HashSet<string> names = new HashSet<string>();
+                string input;
+                while (true)
+                {
+                    input = Console.ReadLine();
+                    if (string.IsNullOrEmpty(input))
+                        break;
+                    names.Add(input);
+                }
+                List<string> sortedNames = new List<string>(names);
+                sortedNames.Sort();
+                Console.WriteLine("Уникальные: " + string.Join(", ", sortedNames));
+            }
+        }
+    }
+}
