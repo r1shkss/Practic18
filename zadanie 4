@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cortis
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList<string> history = new LinkedList<string>();
+            LinkedListNode<string> currentNode = null;
+
+            Console.WriteLine("История браузера");
+            Console.WriteLine("Команды:");
+            Console.WriteLine("[URL] - добавить страницу");
+            Console.WriteLine("back - вернуться назад");
+            Console.WriteLine("exit - завершить программу");
+            Console.WriteLine();
+
+            string input;
+            while (true)
+            {
+                input = Console.ReadLine();
+                if (input == "exit")
+                    break;
+
+                if (input == "back")
+                {
+                    if (currentNode != null && currentNode.Previous != null)
+                    {
+                        currentNode = currentNode.Previous;
+                        Console.WriteLine("Текущая страница: " + currentNode.Value);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Нет предыдущей страницы");
+                    }
+                }
+                else
+                {
+                    var newNode = new LinkedListNode<string>(input);
+                    history.AddLast(newNode);
+                    currentNode = newNode;
+                    Console.WriteLine("Текущая страница: " + currentNode.Value);
+                }
+            }
+
+
+        }
+    }
+}
