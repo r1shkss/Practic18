@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cortis
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, bool> cacheDict = new Dictionary<string, bool>();
+            Queue<string> cacheQueue = new Queue<string>();
+            int maxSize = 3;
+
+            string input;
+            while (true)
+            {
+                input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                    break;
+
+                if (cacheDict.ContainsKey(input))
+                {
+                    continue;
+                }
+
+                if (cacheQueue.Count >= maxSize)
+                {
+                    string oldest = cacheQueue.Dequeue();
+                    cacheDict.Remove(oldest);
+                }
+                cacheQueue.Enqueue(input);
+                cacheDict[input] = true;
+                Console.WriteLine("Текущий кэш: " + string.Join(", ", cacheQueue));
+            }
+        }
+    }
+}
